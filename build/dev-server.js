@@ -21,6 +21,19 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+//接口定义
+var appData = require('../data.json');
+var apiRoutes = express.Router();
+var login = appData.login;
+apiRoutes.post('/login', function (req, res) {
+  res.json({
+    errno: 0,
+    data: login
+  });
+});
+
+app.use('/api', apiRoutes);
+
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
