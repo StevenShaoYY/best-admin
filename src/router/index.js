@@ -1,15 +1,44 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+const _import = require('./_import_' + process.env.NODE_ENV)
+
+const Hello = _import('Hello')
+const Login = _import('login/login');
+const layout = _import('layout/layout');
+const Err404 = _import('404/404');
 
 Vue.use(Router)
+export const constantRouterMap = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/',
+    name: 'index',
+    component: layout,
+    redirect: '/hello',
+    children: [{ path: 'hello', component: Hello },
+      { path: 'hello3', component: Hello }
+    ]
+  },
+  { path: '/404',
+    component: Err404,
+    name: 404
+  }
+];
+export const asyncRouterMap = [
+  {
+    path: '/hello2',
+    name: 'Hello',
+    component: Hello,
+    meta: { role: ['a'] }
+  },
+  { path: '*', redirect: '/404', hidden: true }
+];
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Hello',
-      component: Hello
-    }
-  ]
+  scrollBehavior: () => ({ y: 0 }),
+  routes: constantRouterMap
 })

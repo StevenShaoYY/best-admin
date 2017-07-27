@@ -1,0 +1,57 @@
+<template>
+  <div class="app-wrapper">
+    <div class="header-wrapper">
+      <header-bar></header-bar>
+    </div>
+    <div class="menu-wrapper">
+      <menu-bar></menu-bar>
+    </div>
+    <div class="main">
+      <transition name="fade" mode="out-in">
+        <router-view :key="key"></router-view>
+      </transition>
+    </div>
+  </div>
+</template>
+<script type="text/ecmascript-6">
+  import HeaderBar from 'components/header/header'
+  import MenuBar from 'components/menu/menu'
+  export default{
+    props: {},
+    data() {
+      return {}
+    },
+    computed: {
+      key() {
+        return this.$route.name !== undefined ? this.$route.name + +new Date() : this.$route + +new Date();
+      }
+    },
+    methods: {},
+    components: {
+      HeaderBar,
+      MenuBar
+    }
+
+  };
+</script>
+<style lang="stylus" rel="stylesheet/stylus">
+  .app-wrapper
+    position relative
+    height 100%
+    width 100%
+    .header-wrapper
+      margin-left 200px
+      height 80px;
+    .menu-wrapper
+      position fixed
+      top: 0px
+      bottom: 0
+      left: 0
+      width: 200px
+      z-index: 1001;
+      overflow: hidden;
+      transition: all .28s ease-out;
+    .main
+      min-height calc(100% - 80px);
+      margin-left 200px
+</style>

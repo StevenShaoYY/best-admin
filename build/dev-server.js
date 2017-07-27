@@ -9,6 +9,7 @@ var opn = require('opn')
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
+var bodyParser = require('body-parser');
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
 
@@ -22,14 +23,41 @@ var proxyTable = config.dev.proxyTable
 
 var app = express()
 //接口定义
+app.use(bodyParser.json({limit: '1mb'}));  //body-parser 解析json格式数据
+app.use(bodyParser.urlencoded({            //此项必须在 bodyParser.json 下面,为参数编码
+  extended: true
+}));
 var appData = require('../data.json');
 var apiRoutes = express.Router();
 var login = appData.login;
 apiRoutes.post('/login', function (req, res) {
-  res.json({
-    errno: 0,
-    data: login
-  });
+  //console.log(req.headers['x-token'])
+  if(req.body.email === 'admin@wallstreetcn.com' && req.body.password === '111111'){
+    res.json({
+      code: 0,
+      token: '12345'
+    });
+  } else {
+    res.json({
+      code: 1,
+      data: '账号密码错误！'
+    });
+  }
+
+});
+
+apiRoutes.get('/user/info', function (req, res) {
+  if(req.query.token === '12345'){
+    res.json({
+      code: 0,
+      data: {
+        role:['a'],
+        name: 'sjy',
+        avatar: 'pic123'
+      }
+    });
+  }
+
 });
 
 app.use('/api', apiRoutes);
