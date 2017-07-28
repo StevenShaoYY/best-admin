@@ -7,3 +7,5 @@ export const SET_AVATAR = 'SET_AVATAR';
 export const SET_ROLES = 'SET_ROLES';
 
 export const SET_ROUTERS = 'SET_ROUTERS';
+
+export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';

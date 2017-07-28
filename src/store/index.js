@@ -7,6 +7,7 @@ import Vuex from 'vuex'
 // import * as getters from './getters'
 import user from './modules/user'
 import permission from './modules/permission'
+import toggle from './modules/toggle'
 import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
@@ -18,7 +19,8 @@ export default new Vuex.Store({
   // getters,
   modules: {
     user,
-    permission
+    permission,
+    toggle
   },
   // strict: debug,
   plugins: debug ? [createLogger()] : []

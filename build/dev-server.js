@@ -56,6 +56,13 @@ apiRoutes.get('/user/info', function (req, res) {
         avatar: 'pic123'
       }
     });
+  } else {
+    res.json({
+      code: 14,
+      data: {
+
+      }
+    });
   }
 
 });

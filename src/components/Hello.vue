@@ -21,16 +21,12 @@
 </template>
 
 <script>
-  import $ from 'jquery';
   export default {
     name: 'hello',
     data() {
       return {
         msg: 'Welcome to Your Vue.js App'
       }
-    },
-    created() {
-      console.log($('.hello'));
     }
   }
 </script>

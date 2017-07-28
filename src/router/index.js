@@ -12,6 +12,7 @@ export const constantRouterMap = [
   {
     path: '/login',
     name: 'Login',
+    hidden: true,
     component: Login
   },
   {
@@ -19,12 +20,12 @@ export const constantRouterMap = [
     name: 'index',
     component: layout,
     redirect: '/hello',
-    children: [{ path: 'hello', component: Hello },
-      { path: 'hello3', component: Hello }
-    ]
+    hidden: true,
+    children: [{ path: 'hello', component: Hello }]
   },
   { path: '/404',
     component: Err404,
+    hidden: true,
     name: 404
   }
 ];
@@ -32,8 +33,10 @@ export const asyncRouterMap = [
   {
     path: '/hello2',
     name: 'Hello',
-    component: Hello,
-    meta: { role: ['a'] }
+    component: layout,
+    meta: { role: ['a'] },
+    children: [{ path: 'hello', component: Hello, name: 'hello' },
+      { path: 'hello2', component: Hello, name: 'hello2' }]
   },
   { path: '*', redirect: '/404', hidden: true }
 ];
