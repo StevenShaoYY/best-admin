@@ -17,7 +17,7 @@ export const constantRouterMap = [
   },
   {
     path: '/',
-    name: 'index',
+    name: '首页',
     component: layout,
     redirect: '/hello',
     hidden: true,
@@ -31,12 +31,22 @@ export const constantRouterMap = [
 ];
 export const asyncRouterMap = [
   {
-    path: '/hello2',
-    name: 'Hello',
+    path: '/menu1',
+    name: '菜单一',
     component: layout,
     meta: { role: ['a'] },
-    children: [{ path: 'hello', component: Hello, name: 'hello' },
+    redirect: 'noredirect',
+    children: [{ path: 'index', component: Hello, name: 'hello1' },
       { path: 'hello2', component: Hello, name: 'hello2' }]
+  },
+  {
+    path: '/menu2',
+    // name: '菜单二',
+    component: layout,
+    meta: { role: ['a'] },
+    noDropdown: true,
+    redirect: '/menu2/index',
+    children: [{ path: 'index', component: Hello, name: '菜单二' }]
   },
   { path: '*', redirect: '/404', hidden: true }
 ];

@@ -3,7 +3,7 @@
  */
 import Cookies from 'js-cookie';
 import * as types from '../mutation-types';
-import { login, getInfo } from '@/api/login';
+import { login, getInfo, logout } from '@/api/login';
 
 const user = {
   state: {
@@ -32,6 +32,18 @@ const user = {
         commit('SET_TOKEN', '');
         Cookies.remove('Admin-Token');
         resolve();
+      });
+    },
+    LogOut({ commit, state }) {
+      return new Promise((resolve, reject) => {
+        logout(state.token).then(() => {
+          commit('SET_TOKEN', '');
+          commit('SET_ROLES', []);
+          Cookies.remove('Admin-Token');
+          resolve();
+        }).catch(error => {
+          reject(error);
+        });
       });
     },
     Login({ commit }, userInfo) {

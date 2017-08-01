@@ -1,11 +1,9 @@
 <template>
-  <div class="app-wrapper" ><!--:class="{hideSidebar:!sidebar.opened}"-->
+  <div class="app-wrapper" :class="{hideSidebar:!sidebar.opened}">
     <div class="header-wrapper">
       <header-bar></header-bar>
     </div>
-    <div class="menu-wrapper">
-      <menu-bar class="menu-container"></menu-bar>
-    </div>
+    <menu-bar class="menu-container"></menu-bar>
     <div class="main">
       <transition name="fade" mode="out-in">
         <router-view :key="key"></router-view>
@@ -39,6 +37,15 @@
   };
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: all .2s ease
+  }
+
+  .fade-enter,
+  .fade-leave-active {
+    opacity: 0;
+  }
   .app-wrapper
     position relative
     height 100%
@@ -46,27 +53,24 @@
     .header-wrapper
       margin-left 180px
       height 80px;
-    .menu-wrapper
+      transition: all .28s ease-out;
+    .menu-container
+      transition: width .28s ease-out;
       position fixed
       top: 0px
       bottom: 0
       left: 0
       width: 180px
-      z-index: 1001;
-      overflow: hidden;
-      transition: all .28s ease-out;
+      z-index: 1001
     .main
+      transition: margin-left .28s ease-out;
       min-height calc(100% - 80px);
       margin-left 180px
   .hideSidebar
-    .menu-wrapper
-      transform: translate(-140px, 0);
-      .menu-container
-        transform: translate(132px, 0);
-      &:hover
-        transform: translate(0, 0);
-        .menu-container
-          transform: translate(0, 0);
+    .menu-container
+      width 64px
     .main
-      margin-left: 40px;
+      margin-left: 64px;
+    .header-wrapper
+      margin-left 64px
 </style>

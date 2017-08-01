@@ -20,3 +20,13 @@ export function getInfo(token) {
     params: { token }
   });
 }
+export function logout(token) {
+  return fetch({
+    url: 'api/logout',
+    method: 'post',
+    data: {
+      token
+    }
+  });
+}
+

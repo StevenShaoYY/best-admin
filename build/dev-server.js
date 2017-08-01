@@ -53,7 +53,7 @@ apiRoutes.get('/user/info', function (req, res) {
       data: {
         role:['a'],
         name: 'sjy',
-        avatar: 'pic123'
+        avatar: 'default'
       }
     });
   } else {
@@ -64,7 +64,14 @@ apiRoutes.get('/user/info', function (req, res) {
       }
     });
   }
+});
 
+apiRoutes.post('/logout', function (req, res) {
+
+    res.json({
+      code: 0,
+      data: '登出成功！'
+    });
 });
 
 app.use('/api', apiRoutes);

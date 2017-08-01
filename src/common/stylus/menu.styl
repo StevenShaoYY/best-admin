@@ -1,0 +1,72 @@
+// 侧边栏
+.menu-container
+  >.el-menu
+    width: 100%!important
+  .svg-icon
+    margin-right: 16px
+.hideSidebar
+  .el-submenu
+    >.el-submenu__title
+      padding-left: 23px!important;
+      >span
+        height: 0
+        width: 0
+        overflow: hidden
+        visibility: hidden
+        display: inline-block
+  .submenu-title-noDropdown
+    padding-left: 23px!important
+    text-align: center
+    position: relative
+    span
+      height: 0
+      width: 0
+      overflow: hidden
+      visibility: hidden
+      display: inline-block
+      transition: opacity .3s cubic-bezier(.55, 0, .1, 1)
+      opacity: 0
+    &:hover
+      span
+        display: block
+        border-radius: 3px
+        z-index: 1002
+        width: 140px
+        height: 56px
+        visibility: visible
+        position: absolute
+        right: -145px
+        text-align: left
+        text-indent: 20px
+        top: 0px
+        background-color: #eef1f6
+        color: #48576a
+        opacity: 1
+  .nest-menu
+    .el-submenu__title
+      text-align: initial!important
+      padding-left: 20px!important
+      span
+        height: auto
+        width: auto
+        visibility: visible
+        display: inline
+      .el-submenu__icon-arrow
+        display: block!important
+  .menu-wrapper
+    >.el-menu-item
+      text-align: center
+      .el-submenu__icon-arrow
+        display: none
+    >.el-submenu
+      .el-submenu__title
+        text-align: center
+        .el-submenu__icon-arrow
+          display: none
+.submenu-title-noDropdown
+  span
+    padding-left 5px
+.el-submenu
+  .el-menu-item
+    min-width: 180px!important;
+
