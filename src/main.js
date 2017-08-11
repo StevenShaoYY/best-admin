@@ -1,3 +1,7 @@
+// require('es5-shim');
+// require('es5-shim/es5-sham');
+import 'es5-shim';
+import 'es5-shim/es5-sham';
 import 'babel-polyfill';
 import Vue from 'vue'
 import App from './App'

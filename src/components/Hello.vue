@@ -22,9 +22,11 @@
     width 100%
     background-color #fff
     text-align center
+    position relative
     h1
       color #222
       font-size 30px;
-      line-height calc(100vh - 120px)
-
+      position: absolute
+      top calc(50% - 100px)
+      left calc(50% - 120px)
 </style>

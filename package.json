@@ -12,15 +12,16 @@
   },
   "dependencies": {
     "axios": "0.16.2",
+    "babel-polyfill": "^6.23.0",
     "element-ui": "1.4.1",
+    "es5-shim": "^4.5.9",
     "jquery": "3.1.1",
     "js-cookie": "^2.1.4",
     "normalize.css": "3.0.2",
     "nprogress": "^0.2.0",
     "vue": "^2.3.3",
     "vue-router": "^2.6.0",
-    "vuex": "2.3.1",
-    "babel-polyfill": "^6.23.0"
+    "vuex": "2.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
