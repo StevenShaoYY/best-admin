@@ -32,7 +32,7 @@ var apiRoutes = express.Router();
 var login = appData.login;
 apiRoutes.post('/login', function (req, res) {
   //console.log(req.headers['x-token'])
-  if(req.body.email === 'admin@wallstreetcn.com' && req.body.password === '111111'){
+  if(req.body.email === '123456@qq.com' && req.body.password === '111111'){
     res.json({
       code: 0,
       token: '12345'
